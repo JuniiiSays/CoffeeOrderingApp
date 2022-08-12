@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View view){
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view){
 
         quantity = quantity - 1;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
      * This method display the quantity on the screen.
      * @param number
      */
-    public void display(int number){
+    public void displayQuantity(int number){
         TextView textView = (TextView) findViewById(R.id.qunaity_text_view);
         textView.setText("" + number);
     }
