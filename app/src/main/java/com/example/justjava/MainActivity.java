@@ -11,6 +11,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
+    final int PRICE_OF_COFFEE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
    public void submitOrder (View view){
-       String priceMessage = "Total: $" + (quantity * 5);
-       priceMessage = priceMessage + "\nThank you!";
-       displayMessage(priceMessage);
+       int price = calculatePrice(quantity, PRICE_OF_COFFEE);
+       String orderSummary = createOrderSummary(price);
+       /*String priceMessage = "Total: $" + price;
+       priceMessage = priceMessage + "\nThank you!";*/
+       displayMessage(orderSummary);
    }
 
     /**
@@ -69,5 +72,26 @@ public class MainActivity extends AppCompatActivity {
     private void displayMessage(String message){
         TextView textView = (TextView) findViewById(R.id.price_text_view);
         textView.setText(message);
+    }
+
+    /**
+     * This method will calculate the price of the Order
+     * @param quantityOfCoffes How much coffees ordered.
+     * @param perCupPrice Price of a single coffee cup.
+     */
+    private int calculatePrice(int quantityOfCoffes, int perCupPrice){
+        return quantityOfCoffes * perCupPrice;
+    }
+
+    /**
+     * This method will show the Summary of the order
+     */
+    private String createOrderSummary(int price){
+        String orderSummary;
+        orderSummary = "Name: Junaid Iqbal";
+        orderSummary = orderSummary + "\nQuantity: " + quantity;
+        orderSummary = orderSummary + "\nTotal: $" + price;
+        orderSummary = orderSummary + "\nThank you!";
+        return orderSummary;
     }
 }
