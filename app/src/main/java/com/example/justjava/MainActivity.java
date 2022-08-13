@@ -49,20 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method display the quantity on the screen.
-     * @param number
+     * @param numberOfCoffees
      */
-    public void displayQuantity(int number){
-        TextView textView = (TextView) findViewById(R.id.qunaity_text_view);
-        textView.setText("" + number);
-    }
-
-    /**
-     * This method display the given price on the screen.
-     * @param number
-     */
-    private void displayPrice(int number){
-        TextView displayPriceText = (TextView) findViewById(R.id.price_text_view);
-        displayPriceText.setText(NumberFormat.getCurrencyInstance().format(number));
+    public void displayQuantity(int numberOfCoffees){
+        TextView quantityTextView = (TextView) findViewById(R.id.qunaity_text_view);
+        quantityTextView.setText("" + numberOfCoffees);
     }
 
     /**
@@ -70,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
      * @param message
      */
     private void displayMessage(String message){
-        TextView textView = (TextView) findViewById(R.id.price_text_view);
-        textView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
