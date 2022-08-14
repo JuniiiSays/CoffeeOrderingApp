@@ -12,10 +12,18 @@
         android:padding="16dp"
         tools:context=".MainActivity">
 
+        <EditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TOPPINGS"/>
+            android:text="TOPPINGS"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"/>
         <CheckBox
             android:id="@+id/whipped_cream_check_box"
             android:layout_width="wrap_content"
@@ -33,6 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="QUATITY"/>
         <LinearLayout
