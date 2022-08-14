@@ -43,14 +43,23 @@ public class MainActivity extends AppCompatActivity {
      */
    public void submitOrder (View view){
        boolean hasWhippedCream;
-       CheckBox checkBox = findViewById(R.id.whipped_cream_check_box);
-       if(checkBox.isChecked()){
+       boolean hasChocolate;
+
+       CheckBox whippedCreaCheckBox = findViewById(R.id.whipped_cream_check_box);
+       CheckBox chocolateCheckBox = findViewById(R.id.chocolate_check_box);
+
+       if(whippedCreaCheckBox.isChecked()){
            hasWhippedCream = true;
        }else {
            hasWhippedCream = false;
        }
+       if (chocolateCheckBox.isChecked()){
+           hasChocolate = true;
+       }else {
+           hasChocolate = false;
+       }
        int price = calculatePrice(quantity, PRICE_OF_COFFEE);
-       String orderSummary = createOrderSummary(price,hasWhippedCream);
+       String orderSummary = createOrderSummary(price, hasWhippedCream, hasChocolate);
        /*String priceMessage = "Total: $" + price;
        priceMessage = priceMessage + "\nThank you!";*/
        displayMessage(orderSummary);
@@ -86,10 +95,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method will show the Summary of the order
      */
-    private String createOrderSummary(int price, boolean hasWhippedCream){
+    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate){
         String orderSummary;
         orderSummary = "Name: Junaid Iqbal";
         orderSummary = orderSummary + "\nAdd Whipped Cream? " + hasWhippedCream;
+        orderSummary = orderSummary + "\nAdd Chocolate? " + hasChocolate;
         orderSummary = orderSummary + "\nQuantity: " + quantity;
         orderSummary = orderSummary + "\nTotal: $" + price;
         orderSummary = orderSummary + "\nThank you!";
