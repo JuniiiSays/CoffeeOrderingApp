@@ -48,16 +48,9 @@ public class MainActivity extends AppCompatActivity {
        CheckBox whippedCreaCheckBox = findViewById(R.id.whipped_cream_check_box);
        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_check_box);
 
-       if(whippedCreaCheckBox.isChecked()){
-           hasWhippedCream = true;
-       }else {
-           hasWhippedCream = false;
-       }
-       if (chocolateCheckBox.isChecked()){
-           hasChocolate = true;
-       }else {
-           hasChocolate = false;
-       }
+       hasWhippedCream = whippedCreaCheckBox.isChecked();
+       hasChocolate = chocolateCheckBox.isChecked();
+
        int price = calculatePrice(quantity, PRICE_OF_COFFEE);
        String orderSummary = createOrderSummary(price, hasWhippedCream, hasChocolate);
        /*String priceMessage = "Total: $" + price;
