@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
        boolean hasWhippedCream;
        boolean hasChocolate;
 
-       CheckBox whippedCreaCheckBox = findViewById(R.id.whipped_cream_check_box);
+       CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_check_box);
        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_check_box);
 
-       hasWhippedCream = whippedCreaCheckBox.isChecked();
+       hasWhippedCream = whippedCreamCheckBox.isChecked();
        hasChocolate = chocolateCheckBox.isChecked();
 
        int price = calculatePrice(quantity, PRICE_OF_COFFEE);
