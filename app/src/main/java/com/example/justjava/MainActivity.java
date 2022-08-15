@@ -71,14 +71,28 @@ public class MainActivity extends AppCompatActivity {
        int price = calculatePrice(hasWhippedCream, hasChocolate, quantity, PRICE_OF_COFFEE);
        String orderSummary = createOrderSummary(nameInput, price, hasWhippedCream, hasChocolate);
 
-       Intent intent = new Intent(Intent.ACTION_SEND);
+       /**
+        * This Intent will show a list of Email Apps on the device
+        */
+       Intent sendEmailIntent = new Intent(Intent.ACTION_SENDTO);
+       sendEmailIntent.setData(Uri.parse("mailto:"));
+       sendEmailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name) + "order for" + nameInput);
+       sendEmailIntent.putExtra(Intent.EXTRA_SUBJECT, orderSummary);
+       if (sendEmailIntent.resolveActivity(getPackageManager()) != null){
+           startActivity(Intent.createChooser(sendEmailIntent, "Chose an Email client"));
+       }
+
+       /**
+        * This intent will show a list of all the Apps on the device
+        */
+
+       /*Intent intent = new Intent(Intent.ACTION_SEND);
        intent.setType("plain/text");
        intent.putExtra(Intent.EXTRA_SUBJECT,   getString(R.string.app_name) + "order for" + nameInput);
        intent.putExtra(Intent.EXTRA_TEXT, orderSummary);
        if (intent.resolveActivity(getPackageManager()) != null){
            startActivity(Intent.createChooser(intent, "Chose an Email client"));
-       }
-       /*displayMessage(orderSummary);*/
+       }*/
    }
 
     /**
@@ -88,15 +102,6 @@ public class MainActivity extends AppCompatActivity {
     public void displayQuantity(int numberOfCoffees){
         TextView quantityTextView = (TextView) findViewById(R.id.qunaity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
-    }
-
-    /**
-     *This method display the given text on the screen.
-     * @param message
-     */
-    private void displayMessage(String message){
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 
     /**
