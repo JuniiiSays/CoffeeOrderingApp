@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 0;
+    int quantity = 98;
     final int PRICE_OF_COFFEE = 5;
+    final int PRICE_OF_WHIPPED_CREAM = 1;
+    final int PRICE_OF_CHOCOLATE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is Called when the Increment button is called.
      */
     public void increment(View view){
+        if (quantity >= 100){
+            Toast toast = Toast.makeText(this, "You cannot have more then 100 coffees", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }else
         quantity = quantity + 1;
         displayQuantity(quantity);
     }
@@ -34,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is Called when the Decrement button is Clicked.
      */
     public void decrement(View view){
-
+        if(quantity <= 1){
+            Toast toast = Toast.makeText(this, "You cannot have Less then 1 coffee", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }else
         quantity = quantity - 1;
         displayQuantity(quantity);
     }
@@ -55,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
        hasChocolate = chocolateCheckBox.isChecked();
 
 
-       int price = calculatePrice(quantity, PRICE_OF_COFFEE);
+       int price = calculatePrice(hasWhippedCream, hasChocolate, quantity, PRICE_OF_COFFEE);
        String orderSummary = createOrderSummary(nameInput, price, hasWhippedCream, hasChocolate);
        /*String priceMessage = "Total: $" + price;
        priceMessage = priceMessage + "\nThank you!";*/
@@ -85,7 +97,13 @@ public class MainActivity extends AppCompatActivity {
      * @param quantityOfCoffes How much coffees ordered.
      * @param perCupPrice Price of a single coffee cup.
      */
-    private int calculatePrice(int quantityOfCoffes, int perCupPrice){
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate ,int quantityOfCoffes, int perCupPrice){
+        if (addWhippedCream == true){
+            perCupPrice = perCupPrice + PRICE_OF_WHIPPED_CREAM;
+        }
+        if (addChocolate == true){
+            perCupPrice = perCupPrice + PRICE_OF_CHOCOLATE;
+        }
         return quantityOfCoffes * perCupPrice;
     }
 
