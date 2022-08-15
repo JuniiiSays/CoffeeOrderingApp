@@ -2,6 +2,8 @@ package com.example.justjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +16,7 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 98;
+    int quantity = 2;
     final int PRICE_OF_COFFEE = 5;
     final int PRICE_OF_WHIPPED_CREAM = 1;
     final int PRICE_OF_CHOCOLATE = 2;
@@ -66,12 +68,17 @@ public class MainActivity extends AppCompatActivity {
        hasWhippedCream = whippedCreamCheckBox.isChecked();
        hasChocolate = chocolateCheckBox.isChecked();
 
-
        int price = calculatePrice(hasWhippedCream, hasChocolate, quantity, PRICE_OF_COFFEE);
        String orderSummary = createOrderSummary(nameInput, price, hasWhippedCream, hasChocolate);
-       /*String priceMessage = "Total: $" + price;
-       priceMessage = priceMessage + "\nThank you!";*/
-       displayMessage(orderSummary);
+
+       Intent intent = new Intent(Intent.ACTION_SEND);
+       intent.setType("plain/text");
+       intent.putExtra(Intent.EXTRA_SUBJECT,   getString(R.string.app_name) + "order for" + nameInput);
+       intent.putExtra(Intent.EXTRA_TEXT, orderSummary);
+       if (intent.resolveActivity(getPackageManager()) != null){
+           startActivity(Intent.createChooser(intent, "Chose an Email client"));
+       }
+       /*displayMessage(orderSummary);*/
    }
 
     /**
