@@ -1,5 +1,5 @@
 # Coffee Ordering App
-This is a Simple coffee ordering app which contains a single screen
+This is a Simple coffee ordering app which contains a single screen for odering coffee with toppings. And at the end we calculate the Total bill and send it to the users email.
 
 ## Application Features & Implements
 - EditText: User can input name for the order of Coffee.
