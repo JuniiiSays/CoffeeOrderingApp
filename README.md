@@ -1,6 +1,13 @@
 # Coffee Ordering App
 This is a Simple coffee ordering app which contains a single screen for odering coffee with toppings. And at the end we calculate the Total bill and send it to the users email.
 
+## Screenshots
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/45339238/186886284-01ab4c73-b734-42fa-b9b5-09c6f467d1e5.jpg" width="200" />
+  <img src="https://user-images.githubusercontent.com/45339238/186886303-90c9230a-c752-41f4-9468-2e84488915e7.jpg" width="200" /> 
+  <img src="https://user-images.githubusercontent.com/45339238/186886322-f825fd3d-b79c-45c4-af8b-ebbe42e13046.jpg" width="200" />
+</p>
+
 ## Application Features & Implements
 - EditText: User can input name for the order of Coffee.
 - Button: User can increase or decrease the quantity of Coffee.
